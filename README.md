@@ -30,19 +30,19 @@ mrb = mrbOpen()
 mrbCode = " puts 'Hello, World!' "
 mrbParserState = mrbParseString(mrb, mrbCode, nil)
 mrbGeneratedCode = mrbGenerateCode(mrb, mrbParserState.tree)
-mrbResult = mrbRun( mrb, mrbProcNew(mrb, mrb->irep[mrb_generated_code]), mrbNilValue() )
+mrbResult = mrbRun( mrb, mrbProcNew(mrb, mrb.irep[mrbGeneratedCode]), mrbNilValue() )
 mrbClose(mrb)
 ```
 
 Or use the `mruby` helper table:
 
 ```lua
-mrb = mruby.new
+mrb = mruby.new()
 mrb.assign("$myname", "RyanScottLewis")
 mrb.run("puts $myname")
 
 calculationResult = mrb.eval("10 + 10")
-print calculationResult -- 20
+print(calculationResult) -- 20
 ```
 
 ## Copyright
