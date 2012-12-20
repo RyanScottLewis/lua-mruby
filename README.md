@@ -45,6 +45,10 @@ calculationResult = mrb.eval("10 + 10")
 print(calculationResult) -- 20
 ```
 
+## Acknowlegements
+
+[matsumoto-r][matsumoto-r] for [mruby-on-Lua][mruby-on-Lua]. This wouldn't exist, if not for him.
+
 ## Copyright
 
 Copyright © 2012 Ryan Scott Lewis <ryan@rynet.us>.
@@ -53,3 +57,5 @@ The MIT License (MIT) - See LICENSE for further details.
 
 [mruby]: https://github.com/mruby/mruby
 [lua]: https://github.com/LuaDist/lua
+[matsumoto-r]: https://github.com/matsumoto-r
+[mruby-on-Lua]: https://github.com/matsumoto-r/mruby-on-Lua
