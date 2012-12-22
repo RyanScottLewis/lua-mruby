@@ -3,6 +3,9 @@ package.cpath = package.cpath .. ";../pkg/?.so"
 
 require "mruby"
 
+mruby.run(" puts 'Hello, World!'" )
+
+
 -- mruby.run([[
 -- 
 -- def tak(x, y, z)
@@ -18,8 +21,8 @@ require "mruby"
 -- 
 -- ]])
 
-mrbState = mrbOpen()
-print( mrbState ) -- Print out the MRuby state
-print( mrbState:stack() ) -- Print out the MRuby state's stack
-mrbClose()
-
+-- mrbState = mrbOpen()
+-- print( mrbState ) -- Print out the MRuby state
+-- print( mrbState:stack() ) -- Print out the MRuby state's stack
+-- mrbClose()
+-- 
