@@ -188,8 +188,13 @@ int lua_mrb_eval(lua_State *L) {
     
     // Check for exception
     if (lua_mrb_state->exc) {
-      p(lua_mrb_state, mrb_obj_value(lua_mrb_state->exc));  // Print exception (via Mruby #inspect)
-      lua_mrb_state->exc = 0;                               // Reset exception flag
+      mrb_value lua_mrb_exception_value = mrb_obj_value(lua_mrb_state->exc);
+      mrb_value lua_mrb_exception_inspect_value = mrb_funcall(lua_mrb_state, lua_mrb_exception_value, "inspect", 0);
+      
+      char *string_value = mrb_string_value_ptr(lua_mrb_state, lua_mrb_exception_inspect_value);
+      lua_pushstring(L, string_value);
+      
+      lua_mrb_state->exc = 0; // Reset exception flag
     } else {
       lua_pushmrbvalue(L, lua_mrb_state, lua_mrb_result);   // Pass the MRuby result to Lua
     }

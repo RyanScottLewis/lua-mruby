@@ -28,12 +28,17 @@ class Rake::LuaMRubyTasks < Rake::TaskLib
     desc "Clean up the current build"
     task :clean => ['clean:lua', 'clean:mruby', 'clean:lua_mruby']
     
+    desc "Run specs"
+    task(:spec) { spec_lua_mruby }
+    task :test => :spec
+    
     task :default => [:clean, :compile]
     
   end
   
   define_method(:root)          { (Pathname.new(__FILE__) / '..' / '..' / '..').expand_path }
   define_method(:lib)           { root / 'lib' }
+  define_method(:spec)          { root / 'spec' }
   define_method(:compiler)      { '/usr/bin/gcc' }
   define_method(:mruby)         { lib / 'mruby' }
   define_method(:lua)           { lib / 'lua' }
@@ -71,11 +76,12 @@ class Rake::LuaMRubyTasks < Rake::TaskLib
   
   def init_git
     unless root.join('.git').exist?
-      run "cd #{root} && git init"
-      run "cd #{root} && git remote add origin https://github.com/RyanScottLewis/lua-mruby.git"
-      run "cd #{root} && git pull origin master"
-      run "cd #{root} && git submodule update --init lib/mruby/"
-      run "cd #{root} && git submodule update --init lib/lua/"
+      run "cd #{root}"
+      run "git init"
+      run "git remote add origin https://github.com/RyanScottLewis/lua-mruby.git"
+      run "git pull origin master"
+      run "git submodule update --init lib/mruby/"
+      run "git submodule update --init lib/lua/"
     end
   end
   
@@ -105,6 +111,10 @@ class Rake::LuaMRubyTasks < Rake::TaskLib
   
   def clean_lua_mruby
     run "cd #{root} && rm -rf #{package / 'mruby.so*'}"
+  end
+  
+  def spec_lua_mruby
+    run "tsc -f #{spec / '*_spec.lua'}"
   end
   
 end

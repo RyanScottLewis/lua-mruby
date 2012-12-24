@@ -21,16 +21,6 @@ dependencies = {
 }
 build = {
   type = "command",
-  build_command = "ls -alRH && rake",
-  -- modules = {
-  --   lua_mruby = "lib/lua-mruby.c"
-  --   -- lua_mruby = {
-  --   --    sources = {"lib/lua-mruby.c"},
-  --   -- --    -- defines = {"MAX_DATES_PER_MEAL=50"}
-  --   -- --    -- libraries = {"date"},
-  --   -- --    -- incdirs = {"$(LIBDATE_INCDIR)"},
-  --   -- --    libdirs = {"lib"}
-  --   -- }
-  -- }
+  build_command = "ls -alRH && rake"
 }
 
