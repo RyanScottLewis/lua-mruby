@@ -72,12 +72,11 @@ class Rake::LuaMRubyTasks < Rake::TaskLib
   def init_git
     unless root.join('.git').exist?
       run "cd #{root}"
-      run "git init"
-      run "git remote add origin https://github.com/RyanScottLewis/lua-mruby.git"
-      run "git pull origin master"
-      run "git submodule sync"
-      run "git submodule update --init lib/mruby/"
-      run "git submodule update --init lib/lua/"
+      # run "git init"
+      # run "git remote add origin https://github.com/RyanScottLewis/lua-mruby.git"
+      # run "git pull origin master"
+      run "git submodule init"
+      run "git submodule update"
     end
   end
   
