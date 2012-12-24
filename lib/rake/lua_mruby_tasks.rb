@@ -70,12 +70,12 @@ class Rake::LuaMRubyTasks < Rake::TaskLib
   end
   
   def compile_lua
-    run "cd #{root} && git submodule update lib/lua"
+    run "cd #{root} && git submodule update --init lib/lua/"
     run "cd #{lua} && make posix" # TODO: Not 100% sure this is needed...
   end
   
   def compile_mruby
-    run "cd #{root} && git submodule update lib/mruby"
+    run "cd #{root} && git submodule update --init lib/mruby/"
     run "cd #{mruby} && git pull && make"
   end
   
