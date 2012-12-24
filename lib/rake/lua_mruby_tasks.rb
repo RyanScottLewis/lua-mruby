@@ -70,11 +70,11 @@ class Rake::LuaMRubyTasks < Rake::TaskLib
   end
   
   def compile_lua
-    run "cd #{lua} && make posix" # TODO: Not 100% sure this is needed...
+    run "cd #{lua} && git pull && make posix" # TODO: Not 100% sure this is needed...
   end
   
   def compile_mruby
-    run "cd #{mruby} && make"
+    run "cd #{mruby} && git pull && make"
   end
   
   def compile_lua_mruby
