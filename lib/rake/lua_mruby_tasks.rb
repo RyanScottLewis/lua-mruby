@@ -75,8 +75,8 @@ class Rake::LuaMRubyTasks < Rake::TaskLib
       run "git init"
       run "git remote add origin https://github.com/RyanScottLewis/lua-mruby.git"
       run "git pull origin master"
-      run "git submodule init"
-      run "git submodule update"
+      run "git submodule update --init lib/mruby/"
+      run "git submodule update --init lib/lua/"
     end
   end
   
