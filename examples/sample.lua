@@ -1,12 +1,51 @@
--- Note that you must be in the files directory for this to work (i.e. `cd examples`):
-package.cpath = package.cpath .. ";../pkg/?.so"
+require 'luarocks.require'
+require 'mruby'
 
-require "mruby"
+print(
+  mruby.run(" puts 'Hello, World!' ") == 0
+)
 
-mruby.run(" puts 'Hello, World!' " )
--- print(
- 
--- )
+print('-=-=-=-=-=-=-==-=-=-=-=--=-=-')
+
+print(
+  mruby.run('') == 0
+)
+
+print('-=-=-=-=-=-=-==-=-=-=-=--=-=-')
+
+print(
+  mruby.run('asifbdbdsflbdslbaibidsabifabbsydifh') == 1
+)
+
+print('-=-=-=-=-=-=-==-=-=-=-=--=-=-')
+
+print(
+  mruby.eval(" 'Hello, World!' ") == 'Hello, World!'
+)
+
+print('-=-=-=-=-=-=-==-=-=-=-=--=-=-')
+
+print(
+  mruby.eval("123") == 123
+)
+
+print('-=-=-=-=-=-=-==-=-=-=-=--=-=-')
+
+print(
+  mruby.eval("50 + 50") + 100 == 200
+)
+
+print('-=-=-=-=-=-=-==-=-=-=-=--=-=-')
+
+print(
+  mruby.eval(" puts 'Hello, World!' ") == nil
+)
+
+print('-=-=-=-=-=-=-==-=-=-=-=--=-=-')
+
+print(
+  mruby.eval(" 'Hello, ' ") .. 'World!' == 'Hello, World!'
+)
 
 
 -- print(
